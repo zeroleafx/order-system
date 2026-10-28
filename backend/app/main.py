@@ -1,9 +1,8 @@
-import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from sqlalchemy import create_engine, text
+from sqlalchemy import text
 
-engine = create_engine(os.getenv("DATABASE_URL", "sqlite:///./orders.db"), connect_args={"check_same_thread": False})
+from app.database import engine
 
 @asynccontextmanager
 async def lifespan(app):

@@ -28,7 +28,7 @@ docker compose up --build -d
 
 Stop with `docker compose down`. The SQLite volume survives this command. `docker compose down -v` deletes the local database; only use it for an intentional reset.
 
-Only source folders are mounted, so container dependencies are not overwritten by local folders. Vite forwards `/api` to the backend inside Docker. Run the frontend through Compose with this configuration.
+Source files and Alembic configuration/migrations are mounted, so container dependencies are not overwritten by local folders. Vite forwards `/api` to the backend inside Docker. Run the frontend through Compose with this configuration.
 
 ## Team Git workflow
 
@@ -40,6 +40,6 @@ No remote repository is configured by this starter.
 
 ## Database evolution
 
-SQLite is suitable for this initial local setup. Add Alembic migrations when introducing domain tables; do not rely on create_all to update existing tables. Review database requirements before multi-user deployment.
+SQLite is suitable for this initial local setup. SQLAlchemy models and Alembic migrations now provide initial roles, users, products, orders, order items, stock movements, and anomalies tables. The backend applies pending migrations before starting the API. Business workflows are not implemented. Review database requirements before multi-user deployment.
 
-See `docs/SPRINT_1.md` for the first sprint plan and acceptance checklist.
+See [資料庫設計與操作說明](docs/DATABASE.md) for schema assumptions, team workflow, and validation commands.
