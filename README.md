@@ -29,6 +29,7 @@
 請先安裝 **Git、Docker Desktop、VS Code** / **Cursor**（已使用其他編輯器也可以），並準備 GitHub 帳號。安裝完成後重新開啟終端機，讓電腦讀到新工具。
 
 只照這份指南用 Docker 啟動網站，不需要另外安裝 Python 和 Node.js。
+安裝docker比較複雜可以先看一下：https://www.youtube.com/watch?v=irMmLoAGhmI
 
 ### 2-2. 指令要在哪裡輸入？
 
@@ -182,6 +183,8 @@ git diff
 git add frontend/src/main.jsx
 git diff --cached
 ```
+
+也可以用`git add *`去抓取所有更新過文件
 
 `git add` 是把檔案放進「這次準備記錄的清單」，還沒有上傳。改了多個檔案，就對每個相關檔案執行一次 `git add 檔案路徑`。`git diff --cached` 讓你最後確認清單內的內容，新檔案也會顯示。
 
