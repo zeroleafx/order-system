@@ -1,4 +1,4 @@
-"""Initial shared schema; business workflows and permissions are not implemented."""
+"""Shared database models for orders and the equipment catalog."""
 
 from datetime import datetime
 
@@ -35,6 +35,18 @@ class Product(TimestampMixin, Base):
     name: Mapped[str] = mapped_column(String(200))
     price_minor: Mapped[int] = mapped_column(Integer)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, server_default="1")
+
+
+class Equipment(Base):
+    __tablename__ = "equipment"
+    __table_args__ = (CheckConstraint("daily_rate >= 0", name="ck_equipment_daily_rate"),)
+
+    equipment_id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(200))
+    category: Mapped[str] = mapped_column(String(100))
+    daily_rate: Mapped[int] = mapped_column(Integer)
+    description: Mapped[str] = mapped_column(Text)
+    is_listed: Mapped[bool] = mapped_column(Boolean, default=True, server_default="1")
 
 
 class Order(TimestampMixin, Base):

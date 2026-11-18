@@ -24,7 +24,7 @@ class DatabaseTests(unittest.TestCase):
             engine = make_engine(url)
             self.assertEqual(set(inspect(engine).get_table_names()), {
                 "roles", "users", "products", "orders", "order_items",
-                "stock_movements", "anomalies", "alembic_version",
+                "stock_movements", "anomalies", "equipment", "alembic_version",
             })
             with engine.begin() as c:
                 c.execute(text("INSERT INTO roles (id, name) VALUES (1, 'staff')"))
@@ -43,6 +43,7 @@ class DatabaseTests(unittest.TestCase):
                 "INSERT INTO order_items (order_id, product_id, quantity, unit_price_minor) VALUES (1, 1, 0, 100)",
                 "INSERT INTO stock_movements (product_id, quantity_delta, reason) VALUES (1, 0, 'invalid')",
                 "INSERT INTO anomalies (rule_code, description) VALUES ('test', 'No target')",
+                "INSERT INTO equipment (name, category, daily_rate, description) VALUES ('Camera', 'Camera', -1, '')",
                 "DELETE FROM products WHERE id=1",
             ]
             for statement in invalid:
