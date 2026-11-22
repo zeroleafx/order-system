@@ -1,4 +1,5 @@
 import React from 'react';
+import EquipmentAvailability from './EquipmentAvailability.jsx';
 import { EquipmentPhoto, equipmentDescription } from './EquipmentPhoto.jsx';
 import { formatRate, useEquipment } from './equipmentData.js';
 import './equipment.css';
@@ -10,7 +11,7 @@ export default function EquipmentDetailPage({ equipmentId }) {
   return (
     <section className="equipment-detail" aria-labelledby="equipment-detail-heading">
       <a className="equipment-back" href="#equipment">← 返回器材列表</a>
-      {item ? (
+      {item ? <>
         <div className="equipment-detail-layout">
           <EquipmentPhoto name={item.name} showCredit />
           <div className="equipment-detail-content">
@@ -25,7 +26,8 @@ export default function EquipmentDetailPage({ equipmentId }) {
             <p className="equipment-description">{equipmentDescription(item) || '目前沒有器材介紹。'}</p>
           </div>
         </div>
-      ) : (
+        <EquipmentAvailability />
+      </> : (
         <div className="equipment-directory-message">
           <h1 id="equipment-detail-heading">器材詳情</h1>
           {result.status === 'loading' && <p role="status">正在載入器材…</p>}

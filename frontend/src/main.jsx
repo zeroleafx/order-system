@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './style.css';
 import EquipmentDetailPage from './pages/EquipmentDetailPage.jsx';
 import EquipmentListPage from './pages/EquipmentListPage.jsx';
+import StoreInformation from './pages/StoreInformation.jsx';
 
 const modules = [
   { number: '01', title: '攝影器材', text: '查看器材名稱、分類與每日租金。', href: '#equipment', icon: '▦' },
@@ -30,8 +31,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (hash === '#services') {
-      document.getElementById('services')?.scrollIntoView();
+    if (hash === '#services' || hash === '#rental-information') {
+      document.getElementById(hash.slice(1))?.scrollIntoView();
     } else {
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
@@ -71,7 +72,7 @@ function App() {
           <div className="hero-art" aria-hidden="true"><div className="art-caption">EVERYTHING, IN ORDER.<span>精簡流程・清楚掌握</span></div><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="parcel parcel-back"><span>ORDER / 002</span></div><div className="parcel parcel-front"><div className="tape"/><b>序品</b><span>CURATED & ORGANIZED</span><div className="barcode"/></div><div className="art-badge"><span>✓</span> 每一步，都有紀錄</div><span className="art-bottom">A BETTER WAY TO KEEP TRACK ↗</span></div>
         </section>
         <section id="services" className="services">
-          <div className="section-heading"><div><p className="eyebrow">YOUR EVERYDAY ESSENTIALS</p><h2>你需要的，都在這裡。</h2></div><p>從瀏覽到管理，清楚找到下一步。</p></div>
+          <div className="section-heading"><div><p className="eyebrow">YOUR EVERYDAY ESSENTIALS</p><h2>你需要的，都在這裡。</h2></div><a className="rental-info-link" href="#rental-information">查看門市資訊與租借須知</a></div>
           <div className="cards">{modules.map(item => (
             <article className="service-card" key={item.number}>
               <div className="card-top"><span className="service-icon" aria-hidden="true">{item.icon}</span><span>{item.number}</span></div>
@@ -83,6 +84,7 @@ function App() {
             </article>
           ))}</div>
         </section>
+        <StoreInformation />
         <section className="journey"><div><p className="eyebrow">SIMPLE BY DESIGN</p><h2>簡單三步，開始使用。</h2></div><ol><li><b>01</b><span>瀏覽器材<small>查看品項與每日租金</small></span></li><li><b>02</b><span>登入與下單<small>確認商品及所需數量</small></span></li><li><b>03</b><span>查看進度<small>追蹤訂單處理狀態</small></span></li></ol><p className="planned">以上為預期使用流程，尚未開放下單。</p></section>
       </>}
       {view === 'admin' && <section className="dashboard"><div className="section-heading"><div><p className="eyebrow">WORKSPACE OVERVIEW</p><h1>營運概覽</h1></div><span className="draft">版面預覽</span></div><p className="admin-note">此頁是首頁版面預覽，不代表已登入或具備管理權限。統計 API 與權限驗證尚待整合，未載入任何管理資料。</p><div className="metrics">{['訂單總數', '商品品項', '庫存概況', '待處理異常'].map(label => <article key={label}><span>{label}</span><strong>—</strong><small>等待資料介面</small></article>)}</div><div className="dashboard-panels"><section className="chart-panel"><div className="section-heading"><h2>訂單趨勢</h2><span>Plotly · 規劃中</span></div><div className="chart-empty"><span aria-hidden="true">▥</span><h3>讓數據說明每一天</h3><p>接上 Python 統計 API 後，將在此呈現訂單趨勢。</p><small>目前未提供示範數字或真實統計。</small></div></section><section className="integration"><h2>模組整合進度</h2>{['登入與權限', '商品與庫存', '訂單管理', '異常檢核'].map(name => <div key={name}><span>{name}</span><span className="tag">待整合</span></div>)}<p>首頁介面已建立，將隨各模組完成逐步串接。</p></section></div></section>}
