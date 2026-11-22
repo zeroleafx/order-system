@@ -23,7 +23,7 @@ export default function EquipmentListPage({ filters, onFiltersChange }) {
   return (
     <section className="equipment-directory" aria-labelledby="equipment-heading">
       <div className="equipment-directory-heading">
-        <h1 id="equipment-heading">攝影器材</h1>
+        <h1 id="equipment-heading">租借器材一覽</h1>
         {result.status === 'ready' && <p role="status">共 {result.items.length} 件上架器材</p>}
       </div>
 

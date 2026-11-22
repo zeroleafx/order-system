@@ -7,12 +7,12 @@ export default function StoreInformation() {
       <h2 id="rental-information-heading">門市資訊與租借須知</h2>
       <div className="rental-information-grid">
         <div className="rental-panel">
-          <h3>門市聯絡資訊（專題示範）</h3>
+          <h3>門市聯絡資訊</h3>
           <dl className="store-details">
             <dt>地址</dt>
-            <dd>臺北市中正區博愛路 00 號（相機街示範地址）</dd>
+            <dd>臺北市中正區博愛路 00 號</dd>
             <dt>電話</dt>
-            <dd>02-0000-0000（示範電話）</dd>
+            <dd>02-1234-0000</dd>
             <dt>營業時間</dt>
             <dd>週二至週日 11:00–19:00，週一公休</dd>
           </dl>
@@ -23,6 +23,7 @@ export default function StoreInformation() {
             <li>取件時請攜帶身分證件，並出示預約資訊供門市核對。</li>
             <li>取件和歸還時，請與店員一起清點配件、檢查器材。</li>
             <li>如需改約或延後歸還，請事先聯絡門市確認。</li>
+            <li>每筆訂單需支付五成押金，租借前押金和租金一同支付，歸還後確認器材沒問題即可退回押金。</li>
           </ol>
         </div>
       </div>

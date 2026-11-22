@@ -20,6 +20,42 @@ const sampleMedia = new Map([
     author: 'Julian Fischer',
     description: '可折疊的旅行腳架，適合外拍時固定相機，例如拍長曝光照片或合照。',
   }],
+  ['Sony A7 IV', {
+    src: new URL('./photos/sony-a7-iv.jpg', import.meta.url).href,
+  }],
+  ['Canon EOS R7', {
+    src: new URL('./photos/Canon EOS R7.jpg', import.meta.url).href,
+  }],
+  ['Sony ZV-E10', {
+    src: new URL('./photos/sony-zv-e10.jpg', import.meta.url).href,
+  }],
+  ['Fujifilm X-T5', {
+    src: new URL('./photos/fujifilm-x-t5.jpg', import.meta.url).href,
+  }],
+  ['Canon RF 50mm F1.8 STM', {
+    src: new URL('./photos/canon-rf-50mm.jpg', import.meta.url).href,
+  }],
+  ['Sony FE 24-70mm F2.8 GM II', {
+    src: new URL('./photos/sony-fe-24-70mm.jpg', import.meta.url).href,
+  }],
+  ['Sigma 18-50mm F2.8 DC DN (Sony E)', {
+    src: new URL('./photos/sigma-18-50mm.jpg', import.meta.url).href,
+  }],
+  ['DJI RS 3 Mini', {
+    src: new URL('./photos/dji-rs-3-mini.jpg', import.meta.url).href,
+  }],
+  ['Godox SL60W', {
+    src: new URL('./photos/godox-sl60w.jpg', import.meta.url).href,
+  }],
+  ['amaran 100d', {
+    src: new URL('./photos/amaran-100d.jpg', import.meta.url).href,
+  }],
+  ['RODE Wireless GO II', {
+    src: new URL('./photos/rode-wireless-go-ii.jpg', import.meta.url).href,
+  }],
+  ['Zoom H5', {
+    src: new URL('./photos/zoom-h5.jpg', import.meta.url).href,
+  }],
 ]);
 
 function mediaFor(name) {
