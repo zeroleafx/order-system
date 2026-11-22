@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
+import EquipmentDetailPage from './pages/EquipmentDetailPage.jsx';
 import EquipmentListPage from './pages/EquipmentListPage.jsx';
 
 const modules = [
@@ -13,7 +14,11 @@ function App() {
   const [connection, setConnection] = useState('loading');
   const [attempt, setAttempt] = useState(0);
   const [notice, setNotice] = useState('');
-  const view = hash === '#equipment' ? 'equipment' : hash === '#admin' ? 'admin' : 'customer';
+  const isEquipmentDetail = hash.startsWith('#equipment/');
+  const equipmentId = isEquipmentDetail ? hash.slice('#equipment/'.length) : '';
+  const view = hash === '#equipment' || isEquipmentDetail
+    ? 'equipment'
+    : hash === '#admin' ? 'admin' : 'customer';
 
   useEffect(() => {
     function updateHash() {
@@ -57,7 +62,9 @@ function App() {
     </header>
     <main>
       <div className="topline"><span>ORDER SYSTEM / V2</span><span className={`connection ${connection}`} role="status"><i />{connection === 'ok' ? '系統與資料庫已連線' : connection === 'loading' ? '正在檢查連線…' : '暫時無法連線'}{connection === 'error' && <button onClick={() => setAttempt(n => n + 1)}>重試</button>}</span></div>
-      {view === 'equipment' && <EquipmentListPage />}
+      {view === 'equipment' && (equipmentId
+        ? <EquipmentDetailPage key={equipmentId} equipmentId={equipmentId} />
+        : <EquipmentListPage />)}
       {view === 'customer' && <>
         <section className="hero">
           <div className="hero-copy"><p className="eyebrow">讓每一次選擇，都井然有序</p><h1>從選擇商品，<br />到安心收單。</h1><p className="intro">商品、訂單與進度，一站掌握。<br />簡單清楚的流程，讓每一步都有跡可循。</p><a className="primary" href="#services">探索服務 <span aria-hidden="true">↗</span></a><div className="hero-note"><span /> 顧客首頁初版 · 功能陸續整合中</div></div>

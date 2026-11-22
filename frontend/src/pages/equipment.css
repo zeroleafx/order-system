@@ -65,14 +65,82 @@
 }
 
 .equipment-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: clamp(20px, 3vw, 32px);
   border: 1px solid #e0e5dc;
   border-radius: 9px;
   background: #fff;
   overflow-wrap: anywhere;
+}
+
+.equipment-card > a,
+.equipment-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.equipment-card > a {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.equipment-card-content {
+  width: 100%;
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.equipment-card > a:hover .equipment-card-action {
+  text-decoration: underline;
+}
+
+.equipment-card-action {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+  margin-top: 16px;
+  color: #254e3d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.equipment-photo {
+  width: 100%;
+  margin: 0;
+  background: #edf0e7;
+}
+
+.equipment-card .equipment-photo {
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
+.equipment-photo img,
+.equipment-photo-empty {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.equipment-photo img {
+  display: block;
+  object-fit: contain;
+}
+
+.equipment-photo-empty {
+  display: grid;
+  place-items: center;
+  color: #58695e;
+  font-size: 14px;
+}
+
+.equipment-photo figcaption {
+  padding: 12px 16px;
+  color: #465649;
+  font-size: 12px;
+}
+
+.equipment-photo figcaption a {
+  text-decoration: underline;
 }
 
 .equipment-category {
@@ -121,6 +189,78 @@
 
 .equipment-directory-message button {
   border: 0;
+}
+
+.equipment-detail {
+  min-height: 480px;
+  padding-bottom: 56px;
+}
+
+.equipment-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #254e3d;
+  font-size: 14px;
+}
+
+.equipment-back:hover {
+  text-decoration: underline;
+}
+
+.equipment-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: start;
+  overflow: hidden;
+  border: 1px solid #e0e5dc;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.equipment-detail-content {
+  padding: clamp(24px, 4vw, 48px);
+  overflow-wrap: anywhere;
+}
+
+.equipment-detail-content .equipment-category {
+  display: inline-block;
+}
+
+.equipment-detail-content h1,
+.equipment-detail .equipment-directory-message h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -.035em;
+}
+
+.equipment-detail-content .equipment-rate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px;
+  margin: 0 0 24px;
+  padding: 14px 0;
+  border-block: 1px solid #edf0e9;
+}
+
+.equipment-detail-content .equipment-rate strong {
+  margin-left: 6px;
+  font-size: 28px;
+}
+
+.equipment-detail-content h2 {
+  font-size: 18px;
+}
+
+.equipment-description {
+  margin: 8px 0 0;
+  color: #465649;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 700px) {
+  .equipment-detail-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 380px) {

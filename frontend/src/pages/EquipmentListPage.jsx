@@ -1,44 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { EquipmentPhoto } from './EquipmentPhoto.jsx';
+import { formatRate, useEquipment } from './equipmentData.js';
 import './equipment.css';
 
-const formatRate = new Intl.NumberFormat('zh-TW');
-
 export default function EquipmentListPage() {
-  const [result, setResult] = useState({ status: 'loading' });
-  const [attempt, setAttempt] = useState(0);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => {
-      controller.abort();
-      setResult({ status: 'error' });
-    }, 8000);
-
-    async function loadEquipment() {
-      try {
-        const response = await fetch('/api/v1/equipment', { signal: controller.signal });
-        if (!response.ok) throw new Error('Equipment request failed');
-        const items = await response.json();
-        if (!Array.isArray(items)) throw new Error('Unexpected equipment response');
-        if (!controller.signal.aborted) setResult({ status: 'ready', items });
-      } catch {
-        if (!controller.signal.aborted) setResult({ status: 'error' });
-      } finally {
-        clearTimeout(timeout);
-      }
-    }
-
-    loadEquipment();
-    return () => {
-      clearTimeout(timeout);
-      controller.abort();
-    };
-  }, [attempt]);
-
-  function retry() {
-    setResult({ status: 'loading' });
-    setAttempt(previous => previous + 1);
-  }
+  const { result, retry } = useEquipment();
 
   return (
     <section className="equipment-directory" aria-labelledby="equipment-heading">
@@ -62,12 +28,18 @@ export default function EquipmentListPage() {
           : <ul className="equipment-grid" role="list">
             {result.items.map(item => (
               <li className="equipment-card" key={item.equipment_id}>
-                <p className="equipment-category">{item.category}</p>
-                <h2>{item.name}</h2>
-                <p className="equipment-rate">
-                  <strong>NT${formatRate.format(item.daily_rate)}</strong>
-                  <span>／日</span>
-                </p>
+                <a href={`#equipment/${item.equipment_id}`} aria-labelledby={`equipment-name-${item.equipment_id}`}>
+                  <EquipmentPhoto name={item.name} />
+                  <div className="equipment-card-content">
+                    <p className="equipment-category">{item.category}</p>
+                    <h2 id={`equipment-name-${item.equipment_id}`}>{item.name}</h2>
+                    <p className="equipment-rate">
+                      <strong>NT${formatRate.format(item.daily_rate)}</strong>
+                      <span>／日</span>
+                    </p>
+                    <span className="equipment-card-action">查看詳情 <span aria-hidden="true">↗</span></span>
+                  </div>
+                </a>
               </li>
             ))}
           </ul>
