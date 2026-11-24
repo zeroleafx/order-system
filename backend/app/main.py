@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from sqlalchemy import text
 
 from app.database import engine
+from app.routers import equipment
 
 @asynccontextmanager
 async def lifespan(app):
@@ -12,6 +13,7 @@ async def lifespan(app):
     engine.dispose()
 
 app = FastAPI(title="Order and Inventory Anomaly Detection", lifespan=lifespan)
+app.include_router(equipment.router)
 
 @app.get("/api/health")
 def health():

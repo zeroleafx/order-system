@@ -1,0 +1,257 @@
+:root {
+  --rental-ink: #213a31;
+  --rental-line: #dddcd0;
+  --rental-paper: #f8f7f2;
+  --rental-soft: #eeefe6;
+  --rental-shadow: 0 10px 30px #2939290c;
+  color: var(--rental-ink);
+  background: var(--rental-paper);
+}
+
+.header {
+  height: auto;
+  min-height: 84px;
+  border-color: var(--rental-line);
+}
+
+.topline {
+  justify-content: flex-end;
+  margin: 15px 0;
+}
+
+.camera-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #1e4537, #142e27);
+  color: #fffdf5;
+  box-shadow: var(--rental-shadow);
+}
+
+.camera-hero-copy {
+  align-self: center;
+  padding: clamp(24px, 5vw, 64px);
+}
+
+.camera-hero-copy h1 {
+  margin: 0 0 18px;
+  font-size: clamp(36px, 5.4vw, 66px);
+  letter-spacing: -.07em;
+  line-height: 1.18;
+}
+
+.camera-hero-copy p {
+  max-width: 30ch;
+  color: #e1eadf;
+}
+
+.camera-hero-copy .camera-hero-types {
+  margin: 0 0 16px;
+  color: #f3db9f;
+  font-size: 13px;
+  letter-spacing: .12em;
+}
+
+.camera-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 20px;
+  margin-top: 30px;
+}
+
+.camera-hero-actions .primary {
+  gap: 18px;
+  border-radius: 7px;
+  background: #f3d89d;
+  color: #23372c;
+  font-weight: 700;
+}
+
+.camera-hero-actions .primary:hover {
+  background: #ffebba;
+}
+
+.camera-hero-notes {
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.camera-hero .equipment-photo {
+  align-self: stretch;
+  background: #e8e5da;
+}
+
+.camera-hero .equipment-photo:not(.equipment-photo-empty) {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.camera-hero .equipment-photo img {
+  height: 100%;
+  max-height: 440px;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.camera-hero .equipment-photo figcaption {
+  background: #f3f0e6;
+  font-size: 11px;
+}
+
+.rental-services {
+  padding: 42px 0 36px;
+}
+
+.rental-services .cards {
+  margin-top: 18px;
+}
+
+.rental-services .service-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+}
+
+.rental-services .service-card h3 {
+  margin-top: 0;
+}
+
+.rental-services .service-card p {
+  flex: 1;
+  min-height: auto;
+  color: #52655a;
+  font-size: 14px;
+}
+
+.rental-services .service-card button {
+  color: #58695e;
+}
+
+.rental-journey {
+  grid-template-columns: minmax(120px, .55fr) minmax(0, 2fr);
+}
+
+.rental-journey small {
+  font-size: 12px;
+}
+
+.equipment-directory-heading {
+  padding: clamp(24px, 3.5vw, 40px) clamp(24px, 5vw, 54px);
+  border-color: #dce3d3;
+  border-radius: 18px;
+  background: linear-gradient(115deg, #e2ebdc, #f2efe3);
+}
+
+.catalog-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, .65fr) auto;
+  align-items: end;
+  gap: 16px;
+  margin-top: 20px;
+  padding: clamp(16px, 3vw, 24px);
+  border: 1px solid var(--rental-line);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--rental-shadow);
+}
+
+.catalog-filters label {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.catalog-filters input,
+.catalog-filters select,
+.catalog-reset {
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #b8c4b7;
+  border-radius: 7px;
+  background: #fff;
+  color: var(--rental-ink);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.catalog-filters input,
+.catalog-filters select {
+  width: 100%;
+}
+
+.catalog-reset {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.catalog-reset:hover {
+  background: var(--rental-soft);
+}
+
+.catalog-result-count {
+  margin: 16px 0 -8px;
+  color: #516458;
+  font-size: 14px;
+}
+
+.equipment-card,
+.equipment-detail-layout,
+.rental-panel {
+  border-color: var(--rental-line);
+  border-radius: 14px;
+  box-shadow: var(--rental-shadow);
+}
+
+.equipment-card .equipment-photo {
+  border-radius: 13px 13px 0 0;
+  background: #eeefe6;
+}
+
+.equipment-card .equipment-photo img,
+.equipment-card .equipment-photo-empty {
+  aspect-ratio: 16 / 10;
+}
+
+.equipment-card > a:hover {
+  background: #fbfcf8;
+}
+
+.equipment-card h2 {
+  line-height: 1.3;
+}
+
+.equipment-card-action {
+  color: #254e3d;
+}
+
+.equipment-back {
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 740px) {
+  .camera-hero,
+  .rental-journey {
+    grid-template-columns: 1fr;
+  }
+
+  .camera-hero .equipment-photo img {
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 580px) {
+  .catalog-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .catalog-reset {
+    justify-self: start;
+  }
+}

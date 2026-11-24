@@ -1,0 +1,123 @@
+.rental-info-link {
+  color: #254e3d;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.rental-information {
+  margin-bottom: 36px;
+  scroll-margin-top: 24px;
+}
+
+.rental-information-grid,
+.rental-period-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.rental-information-grid {
+  margin-top: 18px;
+}
+
+.rental-panel {
+  padding: clamp(20px, 4vw, 32px);
+  border: 1px solid #e0e5dc;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.rental-panel h3 {
+  margin: 0 0 14px;
+  font-size: 17px;
+}
+
+.store-details {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 10px 20px;
+  margin: 0;
+  font-size: 14px;
+}
+
+.store-details dd,
+.rental-stock dd {
+  margin: 0;
+}
+
+.store-details dt,
+.rental-stock dt {
+  color: #58695e;
+}
+
+.rental-notes {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 14px;
+}
+
+.rental-notes li + li {
+  margin-top: 10px;
+}
+
+.equipment-availability {
+  margin-top: 24px;
+}
+
+.rental-stock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 36px;
+  margin: 18px 0;
+  padding: 14px 16px;
+  border-radius: 6px;
+  background: #edf0e7;
+  font-size: 14px;
+}
+
+.rental-stock dd {
+  font-weight: 600;
+}
+
+.rental-period-fields label {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.rental-period-fields input {
+  width: 100%;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid #aab8ab;
+  border-radius: 5px;
+  color: #233e35;
+  background: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.rental-period-form button {
+  margin-top: 16px;
+  border: 0;
+}
+
+.rental-period-error,
+.rental-period-confirmation {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.rental-period-error {
+  color: #902f24;
+}
+
+@media (max-width: 650px) {
+  .rental-information-grid,
+  .rental-period-fields {
+    grid-template-columns: 1fr;
+  }
+}
